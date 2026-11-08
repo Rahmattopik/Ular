@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#172554">
+  <title>Ular Tangga Edukasi - 4 Pemain</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><div class="eyebrow">GAME KELOMPOK • 2–4 PEMAIN</div><h1>🐍 Ular Tangga Edukasi</h1></div>
+    <button class="ghost" id="newGameBtn">↻ Game Baru</button>
+  </header>
+
+  <main class="layout">
+    <section class="board-wrap">
+      <div class="board-heading"><span>PAPAN PERMAINAN</span><span id="turnLabel">Giliran: Pemain 1</span></div>
+      <div id="board" class="board" aria-label="Papan ular tangga"></div>
+      <div class="legend">
+        <span>🪜 Tangga = naik</span><span>🐍 Ular = turun</span><span>⭐ Kotak biasa</span>
+      </div>
+    </section>
+
+    <aside class="side">
+      <section class="panel setup-panel">
+        <h2>👥 Pemain</h2>
+        <div id="playerSetup" class="player-setup"></div>
+        <button class="primary full" id="startBtn">Mulai / Terapkan Nama</button>
+      </section>
+
+      <section class="panel turn-panel">
+        <div class="panel-title"><h2>🎲 Giliran</h2><span class="pill" id="phasePill">Siap</span></div>
+        <div id="currentPlayer" class="current-player">Pemain 1</div>
+        <div class="dice-area"><div id="dice" class="dice">⚀</div><button class="primary" id="rollBtn">Lempar Dadu</button></div>
+        <p id="gameMessage" class="message">Tekan “Mulai” lalu lempar dadu untuk bermain.</p>
+        <div class="attack-area">
+          <h3>⚔️ Serang pemain</h3>
+          <div class="attack-controls">
+            <select id="targetPlayer" aria-label="Pilih target"></select>
+            <button id="attackBtn" class="danger">Serang (5 poin)</button>
+          </div>
+          <small>Serangan mengurangi 3 langkah target. Hanya bisa saat giliranmu.</small>
+        </div>
+      </section>
+
+      <section class="panel score-panel">
+        <h2>🏆 Papan Skor</h2>
+        <div id="scoreList"></div>
+      </section>
+      <section class="panel rules">
+        <h2>📜 Aturan Singkat</h2>
+        <ul>
+          <li>Jawaban benar: +2 poin.</li>
+          <li>Jawaban salah: mundur 2 atau 5 langkah secara acak.</li>
+          <li>Serang pemain: gunakan 5 poin, target mundur 3 langkah.</li>
+          <li>Mendarat di tangga naik, ular turun.</li>
+          <li>Menang jika mencapai atau melewati kotak 100.</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <div id="questionModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-top"><span class="pill">PERTANYAAN</span><span id="questionNumber">Kotak 1</span></div>
+      <h2 id="questionText">Pertanyaan akan muncul di sini</h2>
+      <div id="answers" class="answers"></div>
+      <p id="answerFeedback" class="feedback"></p>
+    </div>
+  </div>
+
+  <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-card result-card">
+      <div class="trophy">🏆</div><h2 id="winnerText">Pemenang!</h2>
+      <p>Hebat! Permainan selesai.</p>
+      <button class="primary full" id="playAgainBtn">Main Lagi</button>
+    </div>
+  </div>
+  <footer>Dibuat untuk permainan edukasi kelompok • Bisa dimainkan langsung di browser</footer>
+  <script src="game.js"></script>
+</body>
+</html>
